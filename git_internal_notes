@@ -1,0 +1,31 @@
+echo 'content' | git hash-object -w --stdin
+
+echo 'first' > test.txt
+git hash-object -w test.txt
+
+git update-index --add --cachedinfo 100644 {{hash}} test.txt OR
+git update-index --add test.txt
+
+git update-index test.txt
+
+Yu-Fengs-MacBook-Pro:git_test yfeng$ git write-tree
+d8329fc1cc938780ffdd9f94e0d364e0ea74f579
+
+Yu-Fengs-MacBook-Pro:git_test yfeng$ git write-tree
+0155eb4229851634a0f03eb265b69f5a2d56f341
+
+Yu-Fengs-MacBook-Pro:git_test yfeng$ git write-tree
+3c4e9cd789d88d8d89c1073707c3585e41b0e614
+
+Yu-Fengs-MacBook-Pro:git_test yfeng$ echo 'first commit' | git commit-tree d8329fc1cc938780ffdd9f94e0d364e0ea74f579
+bf4c24825eed6d23282fddce2cb776a43e99e87f
+
+Yu-Fengs-MacBook-Pro:git_test yfeng$ echo 'second commit' | git commit-tree 0155eb4229851634a0f03eb265b69f5a2d56f341 -p bf4c24825eed6d23282fddce2cb776a43e99e87f
+6618ad8d76228c577193ea31d64da1b4beee4504
+
+Yu-Fengs-MacBook-Pro:git_test yfeng$ echo 'third commit' | git commit-tree 3c4e9cd789d88d8d89c1073707c3585e41b0e614 -p 6618ad8d76228c577193ea31d64da1b4beee4504
+bab8e802e8e03922e97ceec9d2f0db29e5ba360b
+
+
+git cat-file -p
+git cat-file -t
