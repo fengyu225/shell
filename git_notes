@@ -23,3 +23,6 @@ git checkout [-p|--patch] [<tree-ish>] [--] <pathspec>...
     out of the index by using --ours or --theirs. With -m, changes made to the
     working tree file can be discarded to re-create the original conflicted merge
     result.
+
+git reset file change only staging area
+git checkout file change both staging and working area
